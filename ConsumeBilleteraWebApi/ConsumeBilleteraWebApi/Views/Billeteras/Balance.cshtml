@@ -1,0 +1,21 @@
+﻿@model ConsumeBilleteraWebApi.Models.Balance
+
+@{
+    ViewBag.Title = "Balance";
+}
+
+<h2>Balance</h2>
+
+<p>
+    <h1>@Html.DisplayFor(modelItem => Model.balance)</h1>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            <h2>@Html.ActionLink("Otra Transaccion", "Create")</h2> 
+        </th>
+        <th></th>
+    </tr>
+
+
+</table>

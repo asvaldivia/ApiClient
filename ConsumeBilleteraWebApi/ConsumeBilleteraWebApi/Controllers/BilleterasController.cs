@@ -36,6 +36,27 @@ namespace ConsumeBilleteraWebApi.Controllers
 
         }
 
+        public async Task<ActionResult> balance()
+        {
+            Balance EmpInfo = new Balance();
+            using (var transaction = new HttpClient())
+            {
+                transaction.BaseAddress = new Uri(BaseUrl);
+                transaction.DefaultRequestHeaders.Clear();
+                transaction.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+                HttpResponseMessage Response = await transaction.GetAsync("get_balance");
+                if (Response.IsSuccessStatusCode)
+                {
+                    var EmpResponse = Response.Content.ReadAsStringAsync().Result;
+
+                    EmpInfo = JsonConvert.DeserializeObject<Balance>(EmpResponse);
+                }
+
+                return View(EmpInfo);
+            }
+
+        }
+
         public ActionResult create()
         {
             return View();
@@ -52,7 +73,7 @@ namespace ConsumeBilleteraWebApi.Controllers
                 var result = postTask.Result;
                 if (result.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Index");
+                    return RedirectToAction("balance");
                 }
             }
             ModelState.AddModelError(string.Empty, "Error, contacta con el administrador");
