@@ -30,4 +30,14 @@ context('Actions', () => {
         cy.contains('Otra Transaccion')
     })
 
+
+    it('Retiro', () => {
+
+        cy.contains('Otra Transaccion').click()
+        cy.get('#operacion').type('retiro')
+        cy.get('#monto').type('10')
+        cy.contains('Confirmar').click()
+        cy.contains('Otra Transaccion')
+    })
+
 })

@@ -7,13 +7,13 @@
 <h2>Balance</h2>
 
 <p>
-    <h1>@Html.DisplayFor(modelItem => Model.balance)</h1>
+    <h1 id="balance">@Html.DisplayFor(modelItem => Model.balance)</h1>
 </p>
 <table class="table">
     <tr>
         <th>
-            <h2>@Html.ActionLink("Otra Transaccion", "Create")</h2>
-            <h2>@Html.ActionLink("Historico de Transacciones", "Index")</h2>
+            <button id="otra_transaccion">@Html.ActionLink("Otra Transaccion", "Create")</button>
+            <button id="historico_transacciones">@Html.ActionLink("Historico de Transacciones", "Index")</button>
         </th>
         <th></th>
     </tr>
